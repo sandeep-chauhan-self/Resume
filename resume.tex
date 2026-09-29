@@ -1,196 +1,119 @@
-% !TEX TS-program = xelatex
-% !TEX encoding = UTF-8 Unicode
-%-------------------------
-% Resume in LaTeX
-% Template base: jakegut/resume (https://github.com/jakegut/resume),
-% itself based on sb2nov/resume. Adapted for XeLaTeX compilation.
-%------------------------
+\documentclass[a4paper,9pt]{extarticle}
 
-\documentclass[letterpaper,11pt]{article}
-
-\usepackage{latexsym}
-\usepackage[empty]{fullpage}
+\usepackage[left=0.55in,right=0.55in,top=0.2in,bottom=0.45in]{geometry}
 \usepackage{titlesec}
-\usepackage{marvosym}
-\usepackage[usenames,dvipsnames]{color}
-\usepackage{verbatim}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
 \usepackage{fancyhdr}
-\usepackage[english]{babel}
-\usepackage{tabularx}
+\usepackage[T1]{fontenc}
 
-
-%----------FONT OPTIONS----------
-% Latin Modern Roman is the OpenType-native equivalent of the original
-% template's default Computer Modern -- same look, but usable with fontspec.
-% Ligatures=NoCommon disables fi/fl/ffi-type glyph substitution, which is
-% required under XeTeX for the PDF text layer to stay copy-paste/ATS-parsable
-% (XeTeX has no equivalent of pdfTeX's \pdfgentounicode fix; this is the
-% engine-appropriate workaround). Swap the font name below for a different
-% look if wanted -- keep the Ligatures=NoCommon option either way.
-\usepackage{iftex}
-\ifPDFTeX
-  \usepackage[T1]{fontenc}
-  \usepackage{lmodern}
-\else
-  \usepackage{fontspec} % Uncomment if using XeLaTeX or LuaLaTeX
-  \setmainfont{Latin Modern Roman}[Ligatures=NoCommon]
-\fi
-
-
-\pagestyle{fancy}
-\fancyhf{} % clear all header and footer fields
-\fancyfoot{}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
-
-% Adjust margins
-\addtolength{\oddsidemargin}{-0.5in}
-\addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1in}
-\addtolength{\topmargin}{-.5in}
-\addtolength{\textheight}{1.0in}
-
-\urlstyle{same}
-
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
 \raggedbottom
 \raggedright
-\setlength{\tabcolsep}{0in}
 
-% Sections formatting
-\titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+\definecolor{linkblue}{RGB}{0,60,140}
 
-% Note: the original template's ATS/copy-paste fix (\input{glyphtounicode};
-% \pdfgentounicode=1) is pdfTeX-only and hard-fails under XeTeX -- removed.
-% The fontspec Ligatures=NoCommon setting above is what keeps this
-% XeLaTeX build's text layer ATS-parsable instead.
+\titleformat{\section}
+  {\normalsize\bfseries\uppercase}
+  {}{0em}{}[\vspace{-0.55em}\rule{\textwidth}{0.8pt}\vspace{-0.2em}]
+\titlespacing*{\section}{0pt}{7pt}{4pt}
 
-%-------------------------
-% Custom commands
-\newcommand{\resumeItem}[1]{
-  \item\small{
-    {#1 \vspace{-2pt}}
-  }
+\newcommand{\resumeItem}[1]{\item\small{#1}}
+
+\newenvironment{resumeItemList}
+  {\begin{itemize}[leftmargin=1.1em,labelsep=0.45em,topsep=1pt,parsep=0pt,itemsep=2pt,label=$\circ$]}
+  {\end{itemize}\vspace{-1pt}}
+
+\newcommand{\roleHeading}[4]{%
+  \vspace{3pt}%
+  \textbf{#1} --- #2 \hfill \textit{#3}\\[1pt]%
+  \ifx&#4&\else \textit{\small #4}\\[1pt]\fi
 }
-
-\newcommand{\resumeSubheading}[4]{
-  \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & #2 \\
-      \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-7pt}
-}
-
-\newcommand{\resumeSubSubheading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \textit{\small#1} & \textit{\small #2} \\
-    \end{tabular*}\vspace{-7pt}
-}
-
-\newcommand{\resumeProjectHeading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \small#1 & #2 \\
-    \end{tabular*}\vspace{-7pt}
-}
-
-\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
-
-\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
-
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
-
-%-------------------------------------------
-%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
-%----------HEADING----------
+%----------- HEADING -----------
 \begin{center}
-    \textbf{\Huge \scshape Sandeep Chauhan} \\ \vspace{2pt}
-    \small Python Developer $|$ Safety-Critical Production Systems $|$ Security Advocate \\ \vspace{2pt}
-    \small Bengaluru, India $|$ 9625401736 $|$
-    \href{mailto:Sandeepchauhan10401@gmail.com}{\underline{Sandeepchauhan10401@gmail.com}} $|$
-    \href{https://linkedin.com/in/sandeep-chauhan-243012181}{\underline{linkedin.com/in/sandeep-chauhan-243012181}} $|$
-    \href{https://github.com/sandeep-chauhan-self}{\underline{github.com/sandeep-chauhan-self}}
+  {\LARGE \textbf{Sandeep Chauhan}}\\[4pt]
+  \small
+  \href{mailto:Sandeepchauhan10401@gmail.com}{\textcolor{linkblue}{Sandeepchauhan10401@gmail.com}} $\;\vert\;$
+  +91 9625401736 $\;\vert\;$
+  \href{https://linkedin.com/in/sandeep-chauhan-243012181}{\textcolor{linkblue}{LinkedIn}} $\;\vert\;$
+  \href{https://github.com/sandeep-chauhan-self}{\textcolor{linkblue}{GitHub}}
 \end{center}
 
+%----------- SUMMARY -----------
+\section{Summary}
+\small
+Software Engineer with \textbf{3.5+ years} of experience building \textbf{scalable backend services} and \textbf{production-grade applications} using \textbf{Python}, \textbf{Django}, and \textbf{Microservices}. Expertise in \textbf{REST API design}, \textbf{SQL optimization}, and integrating \textbf{Generative AI} and \textbf{LLM-assisted workflows}. Proven track record in solving \textbf{high-impact production issues} and driving \textbf{security initiatives} in safety-critical environments. Adept at leveraging \textbf{multi-agent pipelines} and \textbf{automation} to deliver business value.
 
-%-----------EXPERIENCE-----------
-\section{Experience}
-  \resumeSubHeadingListStart
+%----------- EXPERIENCE -----------
+\section{Work Experience}
 
-    \resumeSubheading
-      {Honeywell}{Bengaluru, India}
-      {Software Developer (Python)}{Apr 2024 -- Present}
-      \resumeItemListStart
-        \resumeItem{Core contributor to a production-grade, safety-critical industrial application, owning features end-to-end from design through release.}
-        \resumeItem{Delivered 15+ production releases, including one built from the ground up, while preserving stability and backward compatibility.}
-        \resumeItem{Resolved 250+ high-impact production issues spanning performance, safety, and security defects.}
-        \resumeItem{Serve as product Security Advocate: drove inclusion of security fixes into release scope, aligning development with internal security and European and other countries polices.}
-        \resumeItem{Applied LLM-assisted workflows to speed up code review and documentation.}
-        \resumeItem{Contributed to New Product Introduction (NPI), supporting early design decisions and system hardening in SIL-aligned environments multiple times.}
-      \resumeItemListEnd
+\roleHeading{Software Developer -- Honeywell Technologies}{}{April 2024 -- Present}{}
+\begin{resumeItemList}
+    \resumeItem{Core contributor to a \textbf{production-grade}, \textbf{safety-critical industrial application}, owning features end-to-end from \textbf{design} through \textbf{release}.}
+  \resumeItem{Delivered \textbf{15+ production releases}, including one built from the ground up, while preserving \textbf{stability} and \textbf{backward compatibility}.}
+  \resumeItem{Resolved \textbf{250+ high-impact production issues} spanning \textbf{performance}, \textbf{safety}, and \textbf{security defects}.}
+  \resumeItem{Serve as product \textbf{Security Advocate}: drove inclusion of \textbf{security fixes} into release scope, aligning development with internal security and \textbf{European and other countries policies}.}
+  \resumeItem{Applied \textbf{LLM-assisted workflows} to speed up \textbf{code review} and \textbf{documentation}.}
+  \resumeItem{Contributed to \textbf{New Product Introduction (NPI)}, supporting early \textbf{design decisions} and \textbf{system hardening} in \textbf{SIL-aligned environments} multiple times.}
+  \resumeItem{Architected and built a \textbf{secure data-access service} from scratch, exposing an \textbf{authenticated, whitelisted API} that lets other internal teams read \textbf{live device and sensor data} without direct access to the core configuration tool or its database.}
+  \resumeItem{Designed a \textbf{role-based access control} model layering \textbf{OS-level} (Windows group) and \textbf{database-level} (SQL Server role) \textbf{authorization checks} to gate \textbf{feature-level access} within the platform.}
+  \resumeItem{Lead \textbf{EU Cyber Resilience Act (CRA)} compliance for the product: run \textbf{gap analysis} against evolving regulatory guidelines, maintain \textbf{threat models}, and drive remediation with architects and stakeholders, while directly implementing the required \textbf{security controls}.}
+  \resumeItem{Leading design of \textbf{data-at-rest (AES-256)} and \textbf{TLS-based data-in-transit encryption} for \textbf{device-to-tool communication}, in collaboration with system architects.}
+  \resumeItem{Enabled support for \textbf{multiple industrial communication protocols} (Modbus, Fault Tolerant Ethernet, PROFINET), including \textbf{PROFIsafe}, within the \textbf{core configuration platform}.}
+  \resumeItem{Mentored \textbf{6 new engineers} through onboarding, code review, and platform walkthroughs; serve as a \textbf{go-to technical resource} for architects and stakeholders on system behavior.}
+  \resumeItem{Sit on the \textbf{architecture review board} for all new features, holding \textbf{sign-off authority} on \textbf{security soundness} and proactively identifying \textbf{design failure points} before implementation.}
+\end{resumeItemList}
 
-    \resumeSubheading
-      {Velocity Pvt. Ltd.}{Bengaluru, India}
-      {Software Developer}{Jun 2022 -- Jun 2023}
-      \resumeItemListStart
-        \resumeItem{Developed and stabilized backend Python application logic for customer-facing production systems, closing \textasciitilde600 production issues.}
-        \resumeItem{Implemented multi-currency support, handling internationalization and edge cases; optimized SQL queries for core data workflows.}
-        \resumeItem{Collaborated directly with clients to clarify requirements and accelerate delivery.}
-      \resumeItemListEnd
+\roleHeading{Software Developer -- Velocity Pvt. Ltd.}{}{June 2022 -- June 2023}{}
+\begin{resumeItemList}
+  \resumeItem{Developed and stabilized \textbf{backend Python application logic} for \textbf{customer-facing production systems}, closing \textbf{\textasciitilde600 production issues}.}
+  \resumeItem{Implemented \textbf{multi-currency support}, handling \textbf{internationalization} and edge cases; optimized \textbf{SQL queries} for core \textbf{data workflows}.}
+  \resumeItem{Collaborated directly with \textbf{clients} to clarify requirements and accelerate delivery.}
+\end{resumeItemList}
 
-  \resumeSubHeadingListEnd
-
-
-%-----------PROJECTS-----------
+%----------- PROJECTS -----------
 \section{Projects}
-    \resumeSubHeadingListStart
 
-      \resumeProjectHeading
-          {\textbf{AI Job-Search Automation Pipeline} $|$ \emph{Python, LiteLLM, Playwright, python-jobspy}}{}
-          \resumeItemListStart
-            \resumeItem{Built a local-first, multi-agent pipeline automating the job search lifecycle: discover, score, review, tailor, auto-apply, and track.}
-            \resumeItem{Aggregated listings across LinkedIn, Indeed, Glassdoor, Naukri, and Google Jobs via python-jobspy; ranked matches using LiteLLM-based LLM scoring.}
-            \resumeItem{Automated LinkedIn Easy Apply with Playwright, with integrated resume/cover-letter tailoring and ATS-score validation.}
-          \resumeItemListEnd
+\roleHeading{AI Job-Search Automation Pipeline}{Python, LiteLLM, Playwright, python-jobspy}{2024}{}
+\begin{resumeItemList}
+  \resumeItem{Built a \textbf{local-first}, \textbf{multi-agent pipeline} automating the job search lifecycle: discover, score, review, tailor, auto-apply, and track.}
+  \resumeItem{Aggregated listings across \textbf{LinkedIn}, \textbf{Indeed}, \textbf{Glassdoor}, \textbf{Naukri}, and \textbf{Google Jobs} via \textbf{python-jobspy}; ranked matches using \textbf{LiteLLM-based LLM scoring}.}
+  \resumeItem{Automated \textbf{LinkedIn Easy Apply} with \textbf{Playwright}, with integrated \textbf{resume/cover-letter tailoring} and \textbf{ATS-score validation}.}
+\end{resumeItemList}
 
-      \resumeProjectHeading
-          {\textbf{Stock Analysis \& Signal Pipeline} $|$ \emph{Python, Scikit-learn, Multi-Agent AI}}{}
-          \resumeItemListStart
-            \resumeItem{Architected a CLI-first, multi-stage pipeline: scraped fundamentals and technical indicators, fed an ML model, then routed outputs through multiple AI agents with a consolidator/judge agent for final signal generation.}
-          \resumeItemListEnd
+\roleHeading{Stock Analysis \& Signal Pipeline}{Python, Scikit-learn, Multi-Agent AI}{2024}{}
+\begin{resumeItemList}
+  \resumeItem{Architected a \textbf{CLI-first}, \textbf{multi-stage pipeline}: scraped \textbf{fundamentals} and \textbf{technical indicators}, fed an \textbf{ML model}, then routed outputs through multiple \textbf{AI agents} with a \textbf{consolidator/judge agent} for final signal generation.}
+\end{resumeItemList}
 
-    \resumeSubHeadingListEnd
+%----------- SKILLS -----------
+\section{Skills}
+\small
+\begin{tabular}{@{}p{1.75in}@{}p{5.45in}@{}}
+\textbf{Programming Languages} & : Python, SQL, JavaScript, TypeScript, C++, C\#, Java, Go, HTML/CSS \\[1.5pt]
+\textbf{Libraries \& Frameworks} & : Django, Django REST Framework, Flask, FastAPI, React, Vue.js, Node.js / Express, Microservices, REST API, gRPC, WebSockets, Pandas, NumPy \\[1.5pt]
+\textbf{Databases \& Caching} & : PostgreSQL, MySQL, MongoDB / NoSQL, Redis \\[1.5pt]
+\textbf{Cloud \& DevOps} & : AWS, Azure, GCP, Docker, Kubernetes, Linux / Bash Scripting, CI/CD, Jenkins / GitHub Actions / GitLab CI \\[1.5pt]
+\textbf{Testing \& QA} & : PyTest, Unit \& Integration Testing, Test-Driven Development (TDD) \\[1.5pt]
+\textbf{AI \& Productivity} & : Claude API, GPT-4, RAG, MCP, LiteLLM, Prompt Engineering, n8n, Playwright \\[1.5pt]
+\textbf{Core CS} & : System Design, Low-Level Design (LLD), High-Level Design (HLD), Object-Oriented Programming (OOP) \\[1.5pt]
+\textbf{Tools} & : Git, GitHub, Jira, Agile/Scrum \\
+\end{tabular}
 
-
-%-----------TECHNICAL SKILLS-----------
-\section{Technical Skills}
- \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{\item{
-     \textbf{Languages}{: Python, SQL, JavaScript, HTML/CSS} \\
-     \textbf{Frameworks}{: Django, Django REST Framework, Flask, FastAPI, React} \\
-     \textbf{AI / Agentic}{: Claude API, GPT-4, RAG, MCP, LiteLLM, Prompt Engineering, n8n, Playwright} \\
-     \textbf{Data \& Tools}{: PostgreSQL, MySQL, Pandas, NumPy, Git/GitHub, CI/CD, Jira}
-    }}
- \end{itemize}
-
-
-%-----------EDUCATION & CERTIFICATIONS-----------
+%----------- EDUCATION -----------
 \section{Education \& Certifications}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-      {Dr. A.P.J. Abdul Kalam Technical University}{Lucknow, India}
-      {Bachelor of Technology (B.Tech), Computer Science and Engineering}{}
-    \resumeItem{Cyber Security Advocate (EUCRA) -- Honeywell $|$ SIL Level 1 Certified}
-  \resumeSubHeadingListEnd
+\small
+\textbf{Bachelor of Technology (B.Tech), Computer Science and Engineering}\\
+Dr. A.P.J. Abdul Kalam Technical University, Lucknow, India
+
+\vspace{3pt}
+\begin{resumeItemList}
+  \resumeItem{\textbf{Cyber Security Advocate} $\;\vert\;$ \textbf{SIL Level 1 Certified} $\;\vert\;$ \textbf{AI Champion}}
+\end{resumeItemList}
 
 \end{document}
